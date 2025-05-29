@@ -1,16 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/products", (req, res) => {
-    fetch('https://fakestoreapi.com/products')
-        .then(response => response.json())
-        .then(products => res.json(products));
-});
+const controller = require('../controllers/product.controller');
 
-router.get('/products/:id', (req, res) => {
-    fetch('https://fakestoreapi.com/products/' + req.params.id)
-        .then(response => response.json())
-        .then(product => res.json(product));
-});
+router.get("/products", controller.getProducts);
+router.get('/products/:id', controller.getProduct);
 
 module.exports = router;
