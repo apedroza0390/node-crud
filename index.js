@@ -4,8 +4,6 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-})
+app.use(require("./src/routes/home.route"));
 
 app.listen(PORT, () => console.log('Server listen on http://localhost:' + PORT));
